@@ -83,3 +83,45 @@ PageSpeedTool.afterInit(async () => {
     return;
 });
 ```
+
+## Optimization strategy
+This is just one of multiple ways to optimize existing page:
+1. Do not defer `reset.css` or its analog if you have it.
+2. Do not defer `base.css` with generic styles.
+3. Do not defer font files that are used in your header and content above the fold.
+4. Defer all other styles.
+5. Defer all scripts.
+6. Make sure your initial layout looks good and do not produce layout shift after the deferred styles and scripts are loaded.
+7. If it doesn't look good either load required styles and scripts without delay or update your `base.css`, or create a critical css file for the page.
+
+Some scripts may listen for header or visible content clicks and in that case users are going to be confused when the first interaction won't have any effect. You can either load corresponding listeners without deferring or re-trigger click after all the deferred scripts are loaded. Here is an example:
+```html
+<html>
+<head>
+    <script>
+        // PageSpeedTool initialization here
+        // ...
+        let clickedTarget = false;
+        document.addEventListener("DOMContentLoaded", (event) => {
+            var btn = document.querySelector('.mobileMenu-toggle');
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                clickedTarget = event.target;
+            });
+        });
+    </script>
+    ...
+</head>
+<body>
+    ...
+    <script>
+        // last deferred script in the document
+        PageSpeedTool.deferredScript(() => {
+            if (clickedTarget) {
+                clickedTarget.click();
+            }
+        });
+    </script>
+</body>
+</html>
+```

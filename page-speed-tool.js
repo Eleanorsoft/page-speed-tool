@@ -2,7 +2,7 @@
  * page-speed-tool
  * version 1.0.1
  */
-var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : new function () {
+;var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : new function () {
 
     let initTimeout = null;
     let cookieName = null;
@@ -10,19 +10,19 @@ var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : ne
     let afterInitQueue = [];
 
     function setCookie(name,value,days) {
-        var expires = "";
+        let expires = "";
         if (days) {
-            var date = new Date();
+            let date = new Date();
             date.setTime(date.getTime() + (days*24*60*60*1000));
             expires = "; expires=" + date.toUTCString();
         }
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
     function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for(let i=0;i < ca.length;i++) {
+            let c = ca[i];
             while (c.charAt(0)==' ') c = c.substring(1,c.length);
             if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
         }
@@ -34,14 +34,14 @@ var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : ne
     this.listeners = [];
     this.userOnlyScripts = [];
 
-    var initialize = async () => {
+    let initialize = async () => {
         if (this.initialized) { return; }
         this.initialized = true;
         for (let i = 0; i < this.listeners.length; i++) {
             await this.listeners[i]();
         }
     }
-    var initializeUserOnlyScripts = async () => {
+    let initializeUserOnlyScripts = async () => {
         if (this.userOnlyScriptsInitialized) { return; }
         this.userOnlyScriptsInitialized = true;
         await initialize();
@@ -89,7 +89,7 @@ var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : ne
   
     this.deferredStyle = (s) => {
         this.afterInit(function(){
-            var styles = document.createElement('link');
+            let styles = document.createElement('link');
             styles.rel = 'stylesheet';
             styles.type = 'text/css';
             styles.media = 'all';
@@ -103,7 +103,7 @@ var PageSpeedTool = (typeof(PageSpeedTool) !== 'undefined') ? PageSpeedTool : ne
         this[method](async function(){
             if (typeof(s) === 'string') {
                 await (new Promise((resolve) => {
-                    var script = document.createElement('script');
+                    let script = document.createElement('script');
                     script.onload = resolve;
                     script.src = s;
                     document.getElementsByTagName('head')[0].appendChild(script);
