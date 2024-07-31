@@ -1,0 +1,25 @@
+{
+  "name": "page-speed-tool",
+  "version": "1.0.1",
+  "description": "Tool that impoves page speed score by delaying loading of non-critical resources",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eleanorsoft/page-speed-tool.git"
+  },
+  "keywords": [
+    "page",
+    "speed",
+    "insight",
+    "score",
+    "optimization"
+  ],
+  "author": "Kosntiantyn Yesin <hello@eleanorsoft.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eleanorsoft/page-speed-tool/issues"
+  },
+  "homepage": "https://github.com/Eleanorsoft/page-speed-tool#readme"
+}
