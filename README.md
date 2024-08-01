@@ -1,4 +1,14 @@
 # Page speed tool
+Improve PageSpeed Insights score:
+* Largest Contentful Paint (LCP)
+* Total Blocking Time
+* Reduce unused CSS
+* Eliminate render-blocking resources
+* Avoid enormous network payloads
+* Javascript execution time
+* Minimize main-thread work
+* Minimize third-party usage
+
 This tool helps to improve page speed score by delaying loading of non-critical resources.
 
 > Note: it's always better to optimize your resources to reach the best performance without using similar tools as optimized pages create better UX.
