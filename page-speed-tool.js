@@ -77,7 +77,7 @@
                 afterInitInProgress = true;
                 await l();
                 while (afterInitQueue.length > 0) {
-                    cb = afterInitInProgress.shift();
+                    cb = afterInitQueue.shift();
                     await cb();
                 }
                 afterInitInProgress = false;
