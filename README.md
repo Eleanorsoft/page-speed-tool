@@ -9,7 +9,9 @@ Improve PageSpeed Insights score:
 * Minimize main-thread work
 * Minimize third-party usage
 
-This tool helps to improve page speed score by delaying loading of non-critical resources.
+This tool helps to improve page speed score by delaying loading of non-critical resources. 
+
+It's a way to implement [import on interaction pattern](https://www.patterns.dev/vanilla/import-on-interaction) as [recommended by Shopify](https://shopify.dev/docs/apps/build/performance/general-best-practices#load-non-critical-resources-on-interaction) and other platforms.
 
 > Note: it's always better to optimize your resources to reach the best performance without using similar tools as optimized pages create better UX.
 
