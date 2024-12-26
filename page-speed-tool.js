@@ -105,6 +105,7 @@
                 await (new Promise((resolve) => {
                     let script = document.createElement('script');
                     script.onload = resolve;
+                    script.onerror = resolve;
                     script.src = s;
                     document.getElementsByTagName('head')[0].appendChild(script);
                 }));
