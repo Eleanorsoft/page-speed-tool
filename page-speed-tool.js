@@ -125,13 +125,15 @@
 
     this.enableCookie = (n) => {
         cookieName = (n ? n : 'pst_skip_delay');
-        if (getCookie(cookieName)) {
-            initializeUserOnlyScripts();
-        }
-        setCookie(cookieName, 1, 30);
     };
 
     window.addEventListener('load', () => {
+        if (cookieName) {
+			if (getCookie(cookieName)) {
+				initializeUserOnlyScripts();
+			}
+			setCookie(cookieName, 1, 30);
+		}
         startListening();
         if (initTimeout) {
             setTimeout(initialize, initTimeout);
